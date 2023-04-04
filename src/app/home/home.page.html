@@ -1,0 +1,68 @@
+<ion-header>
+  
+    
+    
+  <ion-grid>
+    <ion-row class="ion-align-items-center cor-letra">
+      <ion-slides pager="false"  [options]="slideOpts">
+        <ion-slide *ngFor="let categ of categs; let ix = index" [ngClass]="categ.codigo == selected ? 'ativado' : 'desativado'" (click)="setSelected(categ.codigo)">
+          {{ categ.nome }}
+        </ion-slide>
+      </ion-slides>
+    </ion-row>
+  </ion-grid>
+
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <ion-row>
+    <ion-col size="6" *ngFor="let produto of produtos; let ix = index" [hidden]="!produto.visibled" (click)="goProduto(produto)">
+      <ion-row>
+        <ion-col size="12" class="card-produto">
+
+          <ion-row>
+            <ion-col size="12" class="img-produto" >
+              <img [src]="pathImgs + produto.imagem[0]">
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-text-center fonte">
+            <ion-col>
+              {{ produto.nome }}<br>
+              {{ produto.preco }}
+              
+            </ion-col>
+          </ion-row>
+
+
+          <ion-row>
+            <ion-col class="ion-text-center">
+              <ion-button color="primary">
+                <ion-icon slot="start" name="information-circle-outline"></ion-icon>
+                Detalhes
+              </ion-button>
+              
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title class="piscar-label">Trabalho de Ionic<br>
+    Arom Danelli de Freitas<br>
+    Rafael Mantovani
+    </ion-title>
+    <ion-fab vertical="bottom" horizontal="end">
+      <ion-fab-button>
+        <ion-icon name="cart-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </ion-toolbar>
+ 
+
+</ion-footer>
